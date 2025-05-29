@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .header-section {
+        background: url("{% static 'assets/background2.jpg' %}") no-repeat center center/cover;
+        height: 400px;
+    }
+</style>
+
+<!-- Header-->
+<header class="py-5 header-section">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Find the Right Doctor. Prioritize Your Health.</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Book Appointments Easily with Trusted Professionals.</p>
+        </div>
+    </div>
+</header>
+
+<!-- Section-->
+  
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            {% for doctor in doctors %}
+            <div class="col mb-5">
+                <div class="card h-100 position-relative">
+                    <!-- Product image-->
+                     <a href="{% url 'doctor_detail' doctor.id %}" style="text-decoration: none; color: inherit; cursor: normal;">
+                        <img class="card-img-top" src="{{ doctor.image.url }}" alt="" />
+
+                        <!-- Product details -->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name -->
+                                <h5 class="fw-bolder">{{ doctor.name }}</h5>
+                                <h5 class="fw-normal text-muted">{{ doctor.specialty }}</h5>
+                            </div>
+                            
+                        </div>
+                    </a>
+
+                    <!-- Product actions -->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div style="display: flex; justify-content: center; gap: 10px;">
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'doctor_detail' doctor.id %}">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    </a>
+</section>
+<!-- Footer-->
+{% endblock content %}

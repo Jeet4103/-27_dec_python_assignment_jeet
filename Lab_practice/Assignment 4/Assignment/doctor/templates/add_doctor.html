@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Header -->
+<header class="py-5 header-section" style="background: url('{% static "assets/background2.jpg" %}') no-repeat center center/cover;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Add Doctor</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Create a New Doctor Profile</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <br>
+            <main style="padding: 1rem;">
+                <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+                    <div class="signup-form" style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+                        <form method="POST" action="{% url 'add_doctor' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" required name="name" placeholder="Enter doctor's name"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="image">Image</label>
+                                <input type="file" id="image" name="image" class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required name="email" placeholder="Enter email"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="specialty">Specialty</label>
+                                <input type="text" id="specialty" required name="specialty" placeholder="Enter specialty"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="phone_number">Phone Number</label>
+                                <input type="number" id="phone_number" required name="phone_number" placeholder="Enter phone number"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" required name="address" placeholder="Enter address"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="description">Description</label>
+                                <textarea id="description" required name="description" placeholder="Enter description"
+                                    class="form-control" rows="4"></textarea>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="fees">Fees</label>
+                                <input type="number" id="fees" required name="fees" placeholder="Enter consultation fees"
+                                    class="form-control">
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100">Add Doctor</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

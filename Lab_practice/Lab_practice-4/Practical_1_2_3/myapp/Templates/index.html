@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/script.js' %}"></script>
+</head>
+
+<body>
+  <form method="post" action="">
+    {% csrf_token %}
+    <table width="700" cellpadding="10">
+
+      <tr>
+        <td colspan="2">
+          <h1>Student Registration Form</h1>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Student name :</td>
+        <td>{{ form.name }}</td>
+      </tr>
+
+      <tr>
+        <td>Date of birth :</td>
+        <td>
+          {{ form.dob }}
+          <br><br>
+          <i>(DD-MM-YYYY)</i>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Mobile no. :</td>
+        <td>{{ form.mobile }}</td>
+      </tr>
+
+      <tr>
+        <td>Email id :</td>
+        <td>{{ form.email }}</td>
+      </tr>
+
+      <tr>
+        <td>Gender :</td>
+        <td>{{ form.gender }}</td>
+      </tr>
+
+      <tr>
+        <td>Address :</td>
+        <td>{{ form.address }}</td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Submit" />
+        </td>
+      </tr>
+
+    </table>
+  </form>
+</body>
+</html>

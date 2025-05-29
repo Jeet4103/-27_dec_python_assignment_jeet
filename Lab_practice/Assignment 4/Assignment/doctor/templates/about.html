@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+     <header class="py-5 header-section" style="background: url('{% static "assets/background2.jpg" %}') no-repeat center center/cover;">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="text-center text-white">
+                        <h1 class="display-4 fw-bolder">About Us.</h1>
+                        <p class="lead fw-normal text-white-50 mb-0">Welcome to Redstore.</p>
+                    </div>
+                </div>
+            </header>
+
+<!-- About Content -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+            <br><br>
+            <div style="max-width: 800px; margin: auto; text-align: justify;">
+                <h2 style="text-align: center; color: #164e83; font-size: 32px; font-weight: bold;">
+                    About Our Clinic – Compassionate Care, Expert Hands
+                </h2>
+                <p>
+                    At <strong>HealthFirst Clinic</strong>, we believe healthcare is more than just a service — it's a commitment to 
+                    <span style="color: #164e83; font-weight: bold;">excellence, trust, and personalized care.</span> 
+                    Our dedicated team of doctors, specialists, and support staff work together to deliver high-quality medical services 
+                    in a warm, welcoming environment.
+                </p>
+
+                <h3 style="color: #164e83; font-size: 24px; font-weight: bold;">Patient-Centered Approach</h3>
+                <p>
+                    Every patient is unique, and so is our care. We listen, we understand, and we treat with empathy. 
+                    Whether it’s a routine consultation or a long-term treatment plan, 
+                    <strong>your well-being is always at the heart of what we do.</strong>
+                </p>
+
+                <h3 style="color: #164e83; font-size: 24px; font-weight: bold;">Experienced & Qualified Professionals</h3>
+                <p>
+                    Our clinic brings together a team of board-certified doctors and healthcare professionals 
+                    with <strong>years of experience</strong> across various specialties. From general medicine to specialized care, 
+                    you're in capable hands.
+                </p>
+
+                <h3 style="color: #164e83; font-size: 24px; font-weight: bold;">Modern Facilities & Advanced Care</h3>
+                <p>
+                    We are equipped with <strong>state-of-the-art medical technology</strong> to ensure accurate diagnosis and effective treatment. 
+                    Our facilities are designed for comfort, privacy, and efficiency—because your time and trust matter.
+                </p>
+
+                <p style="text-align: center; font-size: 20px; font-weight: bold; color: #164e83; margin-top: 30px;">
+                    Your health, our mission. Discover expert care with a human touch at HealthFirst Clinic.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

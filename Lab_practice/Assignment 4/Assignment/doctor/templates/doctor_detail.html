@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+
+      <main class="product-main">
+        <div class="product-container">
+
+          <!-- Gallery Section -->
+          <div class="gallery-container">
+            <div class="main-image">
+              <img src="{{ doctor.image.url }}"
+                   alt="{{ doctor.name }}"
+                   id="mainImage" />
+            </div>
+          </div>
+
+          <!-- Info & Details Section -->
+          <div class="product-info">
+
+            <!-- Doctor Header -->
+            <div class="doctor-header mb-4">
+              <h1 class="doctor-name">{{ doctor.name }}</h1>
+              <h4 class="doctor-specialty">({{ doctor.specialty }})</h4>
+            </div>
+
+            <!-- Fees -->
+            <h5 class="product-description">Fees for Appoint</h5>
+            <div class="price-container mb-4">
+              <span class="sale-price">₹{{ doctor.fees }}/-</span>
+            </div>
+
+            <button id="cartBtn"
+                    class="btn btn-outline-dark mb-5">
+              Book an Appointment
+            </button>
+
+            <!-- Details -->
+            <div class="product-details">
+              <div class="details-section">
+                <h3>Doctor Details</h3>
+                <p class="doctor-description">
+                  {{ doctor.discription }}
+                </p>
+              </div>
+
+              <div class="details-section">
+                <h3>Doctor Qualifications</h3>
+                <ul>
+                  <li>MBBS</li>
+                  <li>MD in General Medicine</li>
+                  <li>10 years of experience</li>
+                </ul>
+                <br>
+                   <div class="details-section">
+                <h3>Clinic Address</h3>
+                <p class="doctor-description">
+                  {{ doctor.address }}
+                </p>
+              </div>
+
+              </div>
+            </div>
+          </div>  <!-- /.product-info -->
+
+        </div>  <!-- /.product-container -->
+      </main>
+      <br>
+    </div>
+  </div>
+</div>
+{% endblock content %}

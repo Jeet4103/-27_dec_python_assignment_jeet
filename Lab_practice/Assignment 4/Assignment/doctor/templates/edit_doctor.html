@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- Header -->
+<header class="py-5 header-section" style="background: url('{% static "assets/background2.jpg" %}') no-repeat center center/cover;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Edit Doctor</h1>
+            <p class="lead fw-normal text-white-50 mb-0" style="color: #333; font-weight: 500;">Edit Doctor Details</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <br>
+            <main style="padding: 1rem;">
+                <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+                    <div class="signup-form" style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+                        <form method="POST" action="{% url 'edit_doctor' doctor.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                           
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="name" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Name</label>
+                                <input type="text" id="name" required placeholder="Enter your Name" name="name"
+                                    value="{{ doctor.name }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                                <div style="flex: 1;">
+                                    <label for="image" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500; text-align: left;">Choose File</label>
+                                    <input type="file" id="image" name="image"
+                                        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                                </div>
+                                <div style="flex-shrink: 0; text-align: center;">
+                                    <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Current Image</label>
+                                    <img style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 1px solid #ddd;" src="{{ doctor.image.url }}" alt="{{ doctor.name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Email</label>
+                                <input type="email" id="email" required placeholder="Enter your Email" name="email"
+                                    value="{{ doctor.email }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="specialty" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Specialty</label>
+                                <input type="text" id="specialty" required placeholder="Enter specialty" name="specialty"
+                                    value="{{ doctor.specialty }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="phone_number" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Phone Number</label>
+                                <input type="number" id="phone_number" required placeholder="Enter phone number" name="phone_number"
+                                    value="{{ doctor.phone_number }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="address" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Address</label>
+                                <input type="text" id="address" required placeholder="Enter your Address" name="address"
+                                    value="{{ doctor.address }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+<div class="form-group" style="margin-bottom: 1.5rem;">
+    <label for="description" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Description</label>
+    <textarea id="description" required placeholder="Enter description" name="discription" 
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;" rows="4">{{ doctor.discription }}</textarea>
+</div>
+
+
+
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label for="fees" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Fees</label>
+                                <input type="number" id="fees" required placeholder="Enter fees" name="fees"
+                                    value="{{ doctor.fees }}"
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                            </div>
+
+                            <button type="submit" class="signup-button"
+                                style="width: 100%; padding: 0.75rem; background-color: #000000; color: white;
+                                border: 1px solid #333333; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer;
+                                transition: background-color 0.3s;"
+                                onmouseover="this.style.backgroundColor='#333333';"
+                                onmouseout="this.style.backgroundColor='#000000';">
+                                Update Doctor
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock content %}
